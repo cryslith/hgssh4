@@ -72,7 +72,9 @@ def main():
     args = parser.parse_args()
 
     config = configparser.ConfigParser()
-    config.read(args.conf)
+    with open(args.conf) as f:
+        config.read_file(f)
+
 
     # Get the original SSH Command sent through. The repo should be the
     # item after the connect string
